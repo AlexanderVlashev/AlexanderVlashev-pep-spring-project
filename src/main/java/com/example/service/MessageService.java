@@ -40,7 +40,7 @@ public class MessageService {
     @Transactional
     public Long deleteMessageById(Integer messageId){
         if(messageRepository.findByMessageId(messageId) == null){
-            return 0L;
+            return null;
         }
         return messageRepository.deleteByMessageId(messageId);
     }
