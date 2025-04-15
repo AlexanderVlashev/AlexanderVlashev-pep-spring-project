@@ -37,12 +37,20 @@ public class MessageService {
         return messageRepository.findByMessageId(messageId);
     }
 
+    @Transactional
     public Long deleteMessageById(Integer messageId){
+        if(messageRepository.findByMessageId(messageId) == null){
+            return 0L;
+        }
         return messageRepository.deleteByMessageId(messageId);
     }
 
     @Transactional
     public Long updateMessage(Integer messageId, String MessageText){
+        if(messageRepository.findByMessageId(messageId) == null){
+            return 0L;
+        }
+        
         if (MessageText.length() > 255 || MessageText.length() == 0){
             return 0L;
         }

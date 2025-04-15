@@ -14,7 +14,7 @@ import com.example.entity.Message;
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
     @Modifying
-    @Query(value = "INSERT INTO message(postedBy, messageText, timePostedEpoch) VALUES (:postedBy, :messageText, :timePostedEpoch)", nativeQuery = true)
+    @Query(value = "INSERT INTO message (postedBy, messageText, timePostedEpoch) VALUES (:postedBy, :messageText, :timePostedEpoch)", nativeQuery = true)
     void InsertMessageIntoTable(@Param("postedBy") Integer postedBy,  @Param("messageText") String messageText, @Param("timePostedEpoch") Long timePostedEpoch);
     
     Message findByPostedByAndMessageTextAndTimePostedEpoch(Integer postedBy, String messageText, Long timePostedEpoch);
